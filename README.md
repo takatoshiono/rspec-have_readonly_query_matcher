@@ -1,8 +1,6 @@
 # Rspec::HaveReadonlyQueryMatcher
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/rspec/have_readonly_query_matcher`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+This library provides an rspec matcher that tests that code issues only read-only queries.
 
 ## Installation
 
@@ -22,7 +20,21 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+### Configuration
+
+`spec/spec_helper.rb`:
+```ruby
+require 'rspec/have_readonly_query_matcher
+RSpec.configuration.include RSpec::HaveReadonlyQueryMatcher
+```
+
+### Matchers
+
+- have_readonly_query
+
+```ruby
+expect { do_something }.to have_readonly_query
+```
 
 ## Development
 
