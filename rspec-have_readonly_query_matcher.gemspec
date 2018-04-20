@@ -5,7 +5,7 @@ require "rspec/have_readonly_query_matcher/version"
 
 Gem::Specification.new do |spec|
   spec.name          = "rspec-have_readonly_query_matcher"
-  spec.version       = Rspec::HaveReadonlyQueryMatcher::VERSION
+  spec.version       = RSpec::HaveReadonlyQueryMatcher::VERSION
   spec.authors       = ["Takatoshi Ono"]
   spec.email         = ["takatoshi.ono@gmail.com"]
 
