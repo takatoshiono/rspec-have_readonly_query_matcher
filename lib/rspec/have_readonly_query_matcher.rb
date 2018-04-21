@@ -7,11 +7,15 @@ module RSpec
     end
 
     class HaveReadonlyQuery
-      def initialize
-      end
-
       def matches?(given_proc)
-        given_proc.call
+        begin
+          Arproxy.enable!
+          given_proc.call
+        rescue Arproxy::Plugin::Readonly::NotReadonlyError => e
+          return false
+        ensure
+          Arproxy.disable!
+        end
         true
       end
 
