@@ -1,19 +1,5 @@
 module RSpec
   module HaveReadonlyQueryMatcher
-    module_function
-
-    def enable!
-      @enabled = true
-    end
-
-    def disable!
-      @enabled = false
-    end
-
-    def enable?
-      @enabled || false
-    end
-
     module Readonlyable
       class NotReadonlyError < StandardError; end
 

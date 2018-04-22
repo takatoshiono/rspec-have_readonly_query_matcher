@@ -7,6 +7,20 @@ module RSpec
       HaveReadonlyQuery.new
     end
 
+    module_function
+
+    def enable!
+      @enabled = true
+    end
+
+    def disable!
+      @enabled = false
+    end
+
+    def enable?
+      @enabled || false
+    end
+
     class HaveReadonlyQuery
       def matches?(given_proc)
         begin
