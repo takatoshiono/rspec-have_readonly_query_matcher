@@ -1,6 +1,6 @@
 # Rspec::HaveReadonlyQueryMatcher
 
-This library provides an rspec matcher that tests that code issues only read-only queries.
+This library provides an rspec matcher that tests the code issues only read queries.
 
 ## Installation
 
@@ -22,7 +22,7 @@ Or install it yourself as:
 
 ### Configuration
 
-`spec/spec_helper.rb`:
+spec/spec_helper.rb:
 ```ruby
 require 'rspec/have_readonly_query_matcher
 
@@ -49,7 +49,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/rspec-have_readonly_query_matcher.
+Bug reports and pull requests are welcome on GitHub at https://github.com/takatoshiono/rspec-have_readonly_query_matcher.
 
 ## License
 
