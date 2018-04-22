@@ -3,19 +3,7 @@ RSpec.describe RSpec::HaveReadonlyQueryMatcher do
     expect(RSpec::HaveReadonlyQueryMatcher::VERSION).not_to be nil
   end
 
-  module ::ActiveRecord
-    module ConnectionAdapters
-      class DummyAdapter
-        def execute(sql, name = nil)
-          { sql: sql, name: name }
-        end
-      end
-    end
-  end
-
-  ::ActiveRecord::ConnectionAdapters::DummyAdapter.prepend(RSpec::HaveReadonlyQueryMatcher::Readonlyable)
-
-  let(:connection) { ::ActiveRecord::ConnectionAdapters::DummyAdapter.new }
+  let(:connection) { ActiveRecord::ConnectionAdapters::DummyAdapter.new }
 
   describe '#have_readonly_query' do
     context 'when have only read queries' do

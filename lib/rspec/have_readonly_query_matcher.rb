@@ -1,4 +1,5 @@
 require "rspec/have_readonly_query_matcher/version"
+require "rspec/have_readonly_query_matcher/config"
 require "rspec/have_readonly_query_matcher/readonlyable"
 
 module RSpec
@@ -8,6 +9,11 @@ module RSpec
     end
 
     module_function
+
+    def configure
+      @config = Config.new
+      yield @config
+    end
 
     def enable!
       @enabled = true
