@@ -1,5 +1,3 @@
-require 'arproxy'
-
 RSpec.describe RSpec::HaveReadonlyQueryMatcher do
   it "has a version number" do
     expect(RSpec::HaveReadonlyQueryMatcher::VERSION).not_to be nil
@@ -15,10 +13,7 @@ RSpec.describe RSpec::HaveReadonlyQueryMatcher do
     end
   end
 
-  Arproxy.configure do |config|
-    config.adapter = 'dummy'
-    config.plugin :readonly
-  end
+  ::ActiveRecord::ConnectionAdapters::DummyAdapter.prepend(RSpec::HaveReadonlyQueryMatcher::Readonlyable)
 
   let(:connection) { ::ActiveRecord::ConnectionAdapters::DummyAdapter.new }
 

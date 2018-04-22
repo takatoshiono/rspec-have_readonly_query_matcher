@@ -1,4 +1,5 @@
 require "rspec/have_readonly_query_matcher/version"
+require "rspec/have_readonly_query_matcher/readonlyable"
 
 module RSpec
   module HaveReadonlyQueryMatcher
@@ -9,12 +10,12 @@ module RSpec
     class HaveReadonlyQuery
       def matches?(given_proc)
         begin
-          Arproxy.enable!
+          RSpec::HaveReadonlyQueryMatcher.enable!
           given_proc.call
-        rescue Arproxy::Plugin::Readonly::NotReadonlyError => e
+        rescue RSpec::HaveReadonlyQueryMatcher::Readonlyable::NotReadonlyError => e
           return false
         ensure
-          Arproxy.disable!
+          RSpec::HaveReadonlyQueryMatcher.disable!
         end
         true
       end
