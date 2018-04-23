@@ -24,7 +24,7 @@ Or install it yourself as:
 
 spec/spec_helper.rb:
 ```ruby
-require 'rspec/have_readonly_query_matcher
+require 'rspec/have_readonly_query_matcher'
 
 RSpec::HaveReadonlyQueryMatcher.configure do |config|
   config.adapter = ActiveRecord::ConnectionAdapters::Mysql2Adapter
@@ -36,9 +36,13 @@ RSpec.configuration.include RSpec::HaveReadonlyQueryMatcher
 ### Matchers
 
 - have_readonly_query
+- have_only_read_query
 
 ```ruby
 expect { do_something }.to have_readonly_query
+
+# same thing
+expect { do_something }.to have_only_read_query
 ```
 
 ## Development
