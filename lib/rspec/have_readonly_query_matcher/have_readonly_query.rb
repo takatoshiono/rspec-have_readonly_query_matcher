@@ -13,6 +13,10 @@ module RSpec
         true
       end
 
+      def description
+        "have readonly queries"
+      end
+
       def failure_message
         "expected have readonly queries"
       end
