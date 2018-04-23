@@ -14,15 +14,15 @@ module RSpec
       end
 
       def description
-        "have readonly queries"
+        "have only read queries"
       end
 
       def failure_message
-        "expected have readonly queries"
+        "expected have only read queries"
       end
 
       def failure_message_when_negated
-        "expected not have readonly queries"
+        "expected not have only read queries"
       end
 
       def supports_block_expectations?

@@ -8,6 +8,7 @@ module RSpec
     def have_readonly_query
       HaveReadonlyQuery.new
     end
+    alias_method :have_only_read_query, :have_readonly_query
 
     module_function
 

@@ -14,6 +14,7 @@ RSpec.describe RSpec::HaveReadonlyQueryMatcher do
 
       it 'success' do
         expect { subject }.to have_readonly_query
+        expect { subject }.to have_only_read_query
       end
     end
 
@@ -26,6 +27,7 @@ RSpec.describe RSpec::HaveReadonlyQueryMatcher do
 
       it 'fail' do
         expect { subject }.not_to have_readonly_query
+        expect { subject }.not_to have_only_read_query
       end
     end
   end
