@@ -26,10 +26,6 @@ spec/spec_helper.rb:
 ```ruby
 require 'rspec/have_readonly_query_matcher'
 
-RSpec::HaveReadonlyQueryMatcher.configure do |config|
-  config.adapter = ActiveRecord::ConnectionAdapters::Mysql2Adapter
-end
-
 RSpec.configuration.include RSpec::HaveReadonlyQueryMatcher
 ```
 

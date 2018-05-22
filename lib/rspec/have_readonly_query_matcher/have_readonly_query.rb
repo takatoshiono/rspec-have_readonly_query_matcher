@@ -2,15 +2,20 @@ module RSpec
   module HaveReadonlyQueryMatcher
     class HaveReadonlyQuery
       def matches?(given_proc)
-        begin
-          RSpec::HaveReadonlyQueryMatcher.enable!
+        read_queries = []
+        callback = lambda { |name, start, finish, id, payload|
+          if payload[:sql] =~ /^(SELECT|SET|SHOW|DESCRIBE)\b/
+            read_queries << true
+          else
+            read_queries << false
+          end
+        }
+
+        ActiveSupport::Notifications.subscribed callback, 'sql.active_record' do
           given_proc.call
-        rescue RSpec::HaveReadonlyQueryMatcher::Readonlyable::NotReadonlyError => e
-          return false
-        ensure
-          RSpec::HaveReadonlyQueryMatcher.disable!
         end
-        true
+
+        read_queries.all?
       end
 
       def description
