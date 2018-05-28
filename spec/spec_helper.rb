@@ -3,9 +3,11 @@ require "rspec/have_readonly_query_matcher"
 
 module ActiveRecord
   module ConnectionAdapters
-    class DummyAdapter
+    class DummyAdapter < AbstractAdapter
       def execute(sql, name = nil)
-        { sql: sql, name: name }
+        log(sql, name) do
+          { sql: sql, name: name }
+        end
       end
     end
   end
@@ -20,10 +22,6 @@ RSpec.configure do |config|
 
   config.expect_with :rspec do |c|
     c.syntax = :expect
-  end
-
-  RSpec::HaveReadonlyQueryMatcher.configure do |config|
-    config.adapter = ActiveRecord::ConnectionAdapters::DummyAdapter
   end
 
   config.include RSpec::HaveReadonlyQueryMatcher
